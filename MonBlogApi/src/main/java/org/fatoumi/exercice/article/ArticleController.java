@@ -2,11 +2,10 @@ package org.fatoumi.exercice.article;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.fatoumi.exercice.article.service.ArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -14,10 +13,38 @@ import java.util.List;
 @Api(value = "CRUD API for articles", description = "CRUD API for articles")
 public class ArticleController {
 
+    @Autowired
+    private ArticleService articleService;
+
     @ApiOperation("Find all articles")
     @GetMapping
     public List<Article> findAll() {
-        return Arrays.asList( new Article("Article 1"), new Article("Article 2"));
+        return articleService.findAll();
     }
+
+    @ApiOperation("Find article by id")
+    @GetMapping("{id}")
+    public Article find(@PathVariable Integer id) {
+        return articleService.find(id);
+    }
+
+    @ApiOperation("Create an article")
+    @PostMapping("create")
+    public Article create(@RequestBody Article article) {
+        return articleService.create(article);
+    }
+
+    @ApiOperation("Edit an article")
+    @PutMapping("edit")
+    public Article edit(@RequestBody Article editedArticle) {
+        return articleService.edit(editedArticle);
+    }
+
+    @ApiOperation("Delete article by id")
+    @DeleteMapping("delete/{id}")
+    public void delete(@PathVariable Integer id) {
+        articleService.delete(id);
+    }
+
 
 }
