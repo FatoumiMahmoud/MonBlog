@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface ArticleService {
 
+    Iterable<Article> findAll2();
+
     /**
      *
      * @return list off all articles

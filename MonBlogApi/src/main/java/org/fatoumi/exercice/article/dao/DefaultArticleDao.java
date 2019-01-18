@@ -18,11 +18,11 @@ public class DefaultArticleDao implements ArticleDao {
 
     @PostConstruct
     public void init() {
-        articles.add(new Article(1, "First Article", "First article content"));
+      /*  articles.add(new Article(1, "First Article", "First article content"));
         articles.add(new Article(2, "Second Article", "Second article content"));
         articles.add(new Article(3, "Third Article", "Third article content"));
         articles.add(new Article(4, "Fourth Article", "Fourth article content"));
-        articles.add(new Article(5, "Fifth Article", "Fifth article content"));
+        articles.add(new Article(5, "Fifth Article", "Fifth article content"));*/
     }
 
     @Override

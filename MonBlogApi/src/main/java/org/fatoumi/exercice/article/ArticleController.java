@@ -3,6 +3,7 @@ package org.fatoumi.exercice.article;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.fatoumi.exercice.article.service.ArticleService;
+import org.fatoumi.exercice.article.service.DefaultArticleService;
 import org.fatoumi.exercice.comment.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +16,14 @@ import java.util.List;
 public class ArticleController {
 
     @Autowired
-    private ArticleService articleService;
+    private DefaultArticleService articleService;
 
     @ApiOperation("Find all articles")
     @GetMapping
-    public List<Article> findAll() {
-        return articleService.findAll();
+    public Iterable<Article2> findAll() {
+        return articleService.findAll2();
     }
-
+/*
     @ApiOperation("Find article by id")
     @GetMapping("{id}")
     public Article find(@PathVariable Integer id) {
@@ -51,5 +52,5 @@ public class ArticleController {
     @PutMapping("{id}/comment")
     public Article addComment(@RequestBody Comment comment, @PathVariable Integer id) {
         return articleService.addComment(id, comment);
-    }
+    }*/
 }
