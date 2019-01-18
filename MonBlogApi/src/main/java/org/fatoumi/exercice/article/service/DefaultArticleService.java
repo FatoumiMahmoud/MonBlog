@@ -1,67 +1,54 @@
 package org.fatoumi.exercice.article.service;
 
 import org.fatoumi.exercice.article.Article;
+import org.fatoumi.exercice.article.dao.ArticleDao;
+import org.fatoumi.exercice.comment.Comment;
+import org.fatoumi.exercice.comment.dao.CommentDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.List;
 
 @Service
 public class DefaultArticleService implements ArticleService {
 
-    private List<Article> articles = new ArrayList<>();
-
-    @PostConstruct
-    public void init() {
-        articles.add(new Article(1, "First Article", "First article content"));
-        articles.add(new Article(2, "Second Article", "Second article content"));
-        articles.add(new Article(3, "Third Article", "Third article content"));
-        articles.add(new Article(4, "Fourth Article", "Fourth article content"));
-        articles.add(new Article(5, "Fifth Article", "Fifth article content"));
-    }
+    @Autowired
+    private ArticleDao articleDao;
+    @Autowired
+    private CommentDao commentDao;
 
     @Override
     public List<Article> findAll() {
-        return articles;
+        return articleDao.findAll();
     }
 
     @Override
     public Article find(Integer id) {
-        Article article = null;
-        Optional<Article> optional = articles.stream().filter(a -> a.getId() == id).findFirst();
-        if (optional.isPresent()) {
-            article = optional.get();
-        }
-        return article;
+        return articleDao.find(id);
     }
 
     @Override
     public Article create(Article article) {
-        article.setId(findLastId() + 1);
-        articles.add(article);
-        return article;
+        return articleDao.create(article);
     }
 
     @Override
     public Article edit(Article article) {
-        Article editedArticle = find(article.getId());
-        if (editedArticle == null) {
-            editedArticle = this.create(article);
-        } else {
-            editedArticle.setTitle(article.getTitle());
-            editedArticle.setContent(article.getContent());
-        }
-        return editedArticle;
+        return articleDao.edit(article);
     }
 
     @Override
     public void delete(Integer id) {
-        articles = articles.stream().filter(a -> a.getId() != id).collect(Collectors.toList());
+        articleDao.delete(id);
     }
 
-    private Integer findLastId() {
-        Optional<Article> optional = articles.stream().max(Comparator.comparing(Article::getId));
-        return optional.isPresent() ? optional.get().getId() : 0;
+    @Override
+    public Article addComment(Integer id, Comment comment) {
+        Comment serializedComment = commentDao.create(comment);
+        Article article = this.find(id);
+        article.getComments().add(serializedComment);
+        return article;
     }
 }
+
+

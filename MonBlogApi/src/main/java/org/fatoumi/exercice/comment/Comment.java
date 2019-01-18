@@ -9,6 +9,9 @@ public class Comment {
 
     private String value;
 
+    public Comment() {
+    }
+
     public Comment(Integer id, String value) {
         this.id = id;
         this.value = value;

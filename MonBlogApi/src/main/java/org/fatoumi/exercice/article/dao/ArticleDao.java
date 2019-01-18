@@ -1,12 +1,10 @@
-package org.fatoumi.exercice.article.service;
+package org.fatoumi.exercice.article.dao;
 
 import org.fatoumi.exercice.article.Article;
-import org.fatoumi.exercice.comment.Comment;
 
 import java.util.List;
 
-public interface ArticleService {
-
+public interface ArticleDao {
     /**
      *
      * @return list off all articles
@@ -39,11 +37,4 @@ public interface ArticleService {
      */
     void delete(Integer id);
 
-    /**
-     *
-     * @param id article id
-     * @param comment the comment to be added to the article
-     * @return the article after modification
-     */
-    Article addComment(Integer id, Comment comment);
 }

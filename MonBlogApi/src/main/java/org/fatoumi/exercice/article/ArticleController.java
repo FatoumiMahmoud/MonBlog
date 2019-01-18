@@ -3,6 +3,7 @@ package org.fatoumi.exercice.article;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.fatoumi.exercice.article.service.ArticleService;
+import org.fatoumi.exercice.comment.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,5 +47,9 @@ public class ArticleController {
         articleService.delete(id);
     }
 
-
+    @ApiOperation("Add comment to article")
+    @PutMapping("{id}/comment")
+    public Article addComment(@RequestBody Comment comment, @PathVariable Integer id) {
+        return articleService.addComment(id, comment);
+    }
 }
