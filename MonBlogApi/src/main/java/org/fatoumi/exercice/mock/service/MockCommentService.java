@@ -1,18 +1,16 @@
-package org.fatoumi.exercice.comment.service;
+package org.fatoumi.exercice.mock.service;
 
-import org.fatoumi.exercice.comment.Comment;
-import org.fatoumi.exercice.comment.dao.CommentDao;
+import org.fatoumi.exercice.mock.dao.CommentDao;
+import org.fatoumi.exercice.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class DefaultCommentService implements CommentService {
+public class MockCommentService implements CommentService {
 
     @Autowired
     private CommentDao commentDao;
-
+/*
     @Override
     public List<Comment> findAll() {
         return commentDao.findAll();
@@ -36,5 +34,5 @@ public class DefaultCommentService implements CommentService {
     @Override
     public void delete(Integer id) {
         commentDao.delete(id);
-    }
+    }*/
 }

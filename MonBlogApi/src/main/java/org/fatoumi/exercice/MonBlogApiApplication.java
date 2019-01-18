@@ -1,7 +1,7 @@
 package org.fatoumi.exercice;
 
-import org.fatoumi.exercice.article.Article2;
-import org.fatoumi.exercice.article.repository.ArticleRepository;
+import org.fatoumi.exercice.entity.ArticleEntity;
+import org.fatoumi.exercice.repository.ArticleRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -22,8 +22,8 @@ public class MonBlogApiApplication {
     public CommandLineRunner demo(ArticleRepository articleRepository) {
         return (args) -> {
             log.info("Save a couple of articles ");
-            articleRepository.save(new Article2("article 1", "artticle 1 content"));
-            articleRepository.save(new Article2("article 2", "artticle 2 content"));
+            articleRepository.save(new ArticleEntity("article 1", "artticle 1 content"));
+            articleRepository.save(new ArticleEntity("article 2", "artticle 2 content"));
             log.info("--------------------------------------------");
         };
 

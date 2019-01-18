@@ -1,14 +1,12 @@
-package org.fatoumi.exercice.article;
+package org.fatoumi.exercice.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.fatoumi.exercice.article.service.ArticleService;
-import org.fatoumi.exercice.article.service.DefaultArticleService;
-import org.fatoumi.exercice.comment.Comment;
+import org.fatoumi.exercice.entity.Article;
+import org.fatoumi.exercice.entity.ArticleEntity;
+import org.fatoumi.exercice.service.DefaultArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/articles")
@@ -20,10 +18,10 @@ public class ArticleController {
 
     @ApiOperation("Find all articles")
     @GetMapping
-    public Iterable<Article2> findAll() {
-        return articleService.findAll2();
+    public Iterable<ArticleEntity> findAll() {
+        return articleService.findAll();
     }
-/*
+
     @ApiOperation("Find article by id")
     @GetMapping("{id}")
     public Article find(@PathVariable Integer id) {
@@ -32,13 +30,13 @@ public class ArticleController {
 
     @ApiOperation("Create an article")
     @PostMapping("create")
-    public Article create(@RequestBody Article article) {
+    public Article create(@RequestBody ArticleEntity article) {
         return articleService.create(article);
     }
 
     @ApiOperation("Edit an article")
     @PutMapping("edit")
-    public Article edit(@RequestBody Article editedArticle) {
+    public Article edit(@RequestBody ArticleEntity editedArticle) {
         return articleService.edit(editedArticle);
     }
 
@@ -47,10 +45,10 @@ public class ArticleController {
     public void delete(@PathVariable Integer id) {
         articleService.delete(id);
     }
-
+/*
     @ApiOperation("Add comment to article")
     @PutMapping("{id}/comment")
-    public Article addComment(@RequestBody Comment comment, @PathVariable Integer id) {
+    public ArticleMock addComment(@RequestBody CommentMock comment, @PathVariable Integer id) {
         return articleService.addComment(id, comment);
     }*/
 }

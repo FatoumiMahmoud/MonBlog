@@ -1,22 +1,20 @@
-package org.fatoumi.exercice.comment;
+package org.fatoumi.exercice.controller;
 
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.fatoumi.exercice.comment.service.CommentService;
+import org.fatoumi.exercice.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/comments")
-@Api(value = "CRUD API for comments", description = "CRUD API for comments")
+@RequestMapping("/api/commentMocks")
+@Api(value = "CRUD API for commentMocks", description = "CRUD API for commentMocks")
 public class CommentController {
 
     @Autowired
     private CommentService commentService;
-
-    @ApiOperation("Find all comments")
+/*
+    @ApiOperation("Find all commentMocks")
     @GetMapping
     public List<Comment> findAll() {
         return commentService.findAll();
@@ -44,5 +42,5 @@ public class CommentController {
     @DeleteMapping("delete/{id}")
     public void delete(@PathVariable Integer id) {
         commentService.delete(id);
-    }
+    }*/
 }

@@ -1,4 +1,4 @@
-package org.fatoumi.exercice.article;
+package org.fatoumi.exercice.entity;
 
 
 import lombok.Data;
@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class Article2 {
+public class ArticleEntity extends  Article{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     //TODO: use Long instead of Integer
@@ -18,10 +18,10 @@ public class Article2 {
     private String title;
     private String content;
 
-    public Article2() {
+    public ArticleEntity() {
     }
 
-    public Article2(String title, String content) {
+    public ArticleEntity(String title, String content) {
         this.title = title;
         this.content = content;
     }
