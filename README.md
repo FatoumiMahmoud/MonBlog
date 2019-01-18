@@ -11,6 +11,14 @@ mvn spring-boot:run
 ### Using java (require JDK 8 or later)
 java -jar target\monblogapi-0.0.1-SNAPSHOT.jar
 
+## Test backend
+open browser
+try this url http://localhost:9080/api/articles for articles list
+Try this url http://localhost:9080/api/comments for comments list
+
+## TODO swagger url
+
+
 [x] Créer un nouveau compte github
 [x] Créer le prjet dedans et l'importer en locale
 [x] Créer l'application avec springBoot
