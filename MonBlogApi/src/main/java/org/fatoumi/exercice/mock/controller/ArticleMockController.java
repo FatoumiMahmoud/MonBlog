@@ -2,7 +2,9 @@ package org.fatoumi.exercice.mock.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.fatoumi.exercice.entity.Article;
 import org.fatoumi.exercice.mock.entity.ArticleMock;
+import org.fatoumi.exercice.mock.entity.CommentMock;
 import org.fatoumi.exercice.mock.service.MockArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -46,10 +48,10 @@ public class ArticleMockController {
         mockArticleService.delete(id);
     }
 
-    /*
+
     @ApiOperation("Add comment to article")
     @PutMapping("{id}/comment")
-    public ArticleMock addComment(@RequestBody CommentMock comment, @PathVariable Integer id) {
+    public Article addComment(@RequestBody CommentMock comment, @PathVariable Integer id) {
         return mockArticleService.addComment(id, comment);
-    }*/
+    }
 }

@@ -3,10 +3,9 @@ package org.fatoumi.exercice.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -17,6 +16,10 @@ public class ArticleEntity extends  Article{
     private Integer id;
     private String title;
     private String content;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "article_id")
+    private List<CommentEntity> comments = new ArrayList<>();
 
     public ArticleEntity() {
     }
