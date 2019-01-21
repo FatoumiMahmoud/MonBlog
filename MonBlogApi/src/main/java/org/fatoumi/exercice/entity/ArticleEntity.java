@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @Entity
 public class ArticleEntity extends  Article{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //TODO: use Long instead of Integer
     private Integer id;
     private String title;
