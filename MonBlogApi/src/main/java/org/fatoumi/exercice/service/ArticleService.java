@@ -1,8 +1,7 @@
 package org.fatoumi.exercice.service;
 
 import org.fatoumi.exercice.entity.Article;
-
-import javax.xml.stream.events.Comment;
+import org.fatoumi.exercice.entity.Comment;
 
 public interface ArticleService {
 

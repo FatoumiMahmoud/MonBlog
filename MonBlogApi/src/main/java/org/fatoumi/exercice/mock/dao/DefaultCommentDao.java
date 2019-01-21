@@ -44,8 +44,14 @@ public class DefaultCommentDao implements CommentDao {
     }
 
     @Override
-    public CommentMock findByArticle(Integer articleId) {
-        return null;
+    public Iterable<CommentMock> findByArticle(Integer articleId) {
+        Iterable<CommentMock> commentMocks = null;
+        Optional<ArticleMock> optionalArticleMock = this.articleDao.findAll()
+                .stream().filter(a -> articleId.equals(a.getId())).findFirst();
+        if (optionalArticleMock.isPresent()) {
+            commentMocks = optionalArticleMock.get().getCommentMocks();
+        }
+        return commentMocks;
     }
 
     @Override
@@ -70,14 +76,17 @@ public class DefaultCommentDao implements CommentDao {
                 .findFirst()
                 .get();
 
-        articleMock.setCommentMocks(articleMock.getCommentMocks().stream().filter(c -> id.equals(c.getId())).collect(Collectors.toList()));
-        this.commentMocks = this.commentMocks.stream().filter(c -> c.getId() == id).collect(Collectors.toList());
+        articleMock.setCommentMocks(articleMock.getCommentMocks().stream().filter(c -> !id.equals(c.getId())).collect(Collectors.toList()));
+        this.commentMocks = this.commentMocks.stream().filter(c -> !id.equals(c.getId())).collect(Collectors.toList());
     }
 
     private void setRandomComments(ArticleMock articleMock) {
-        articleMock.getCommentMocks().add(new CommentMock(++lastId, "Commmmmmments " + lastId));
-        articleMock.getCommentMocks().add(new CommentMock(++lastId, "Commmmmmments " + lastId));
-        this.commentMocks.addAll(articleMock.getCommentMocks());
+        CommentMock c1 = new CommentMock(++lastId, "Commmmmmments " + lastId),
+                c2 = new CommentMock(++lastId, "Commmmmmments " + lastId);
+        articleMock.getCommentMocks().add(c1);
+        articleMock.getCommentMocks().add(c2);
+        this.commentMocks.add((CommentMock) c1);
+        this.commentMocks.add((CommentMock) c2);
     }
 
     private Integer findLastId() {

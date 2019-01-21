@@ -1,6 +1,7 @@
 package org.fatoumi.exercice.mock.service;
 
 import org.fatoumi.exercice.entity.Article;
+import org.fatoumi.exercice.entity.Comment;
 import org.fatoumi.exercice.mock.dao.ArticleDao;
 import org.fatoumi.exercice.mock.dao.CommentDao;
 import org.fatoumi.exercice.mock.entity.ArticleMock;
@@ -9,7 +10,6 @@ import org.fatoumi.exercice.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.stream.events.Comment;
 
 @Service
 public class MockArticleService implements ArticleService {
