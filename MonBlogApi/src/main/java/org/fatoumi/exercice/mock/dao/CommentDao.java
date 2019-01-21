@@ -1,5 +1,6 @@
 package org.fatoumi.exercice.mock.dao;
 
+import org.fatoumi.exercice.entity.Comment;
 import org.fatoumi.exercice.mock.entity.CommentMock;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 public interface CommentDao {
 
     /**
-     * @return list off all commentMocks
+     * @return list off all Comments
      */
     List<CommentMock> findAll();
 
@@ -15,25 +16,25 @@ public interface CommentDao {
      * @param id article id
      * @return the comment with the id
      */
-    CommentMock find(Integer id);
+    Comment find(Integer id);
 
     /**
      * @param articleId
-     * @return the list of all commentMocks for given article id
+     * @return the list of all Comments for given article id
      */
-    CommentMock findByArticle(Integer articleId);
+    Iterable<CommentMock> findByArticle(Integer articleId);
 
     /**
-     * @param commentMock the commentMock without id
-     * @return the created commentMock
+     * @param Comment the Comment without id
+     * @return the created Comment
      */
-    CommentMock create(CommentMock commentMock);
+    CommentMock create(CommentMock Comment);
 
     /**
-     * @param commentMock
-     * @return the edited commentMock
+     * @param Comment
+     * @return the edited Comment
      */
-    CommentMock edit(CommentMock commentMock);
+    CommentMock edit(CommentMock Comment);
 
     /**
      * @param id comment id to be deleted

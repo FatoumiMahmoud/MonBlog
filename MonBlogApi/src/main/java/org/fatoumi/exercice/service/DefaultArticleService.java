@@ -2,11 +2,12 @@ package org.fatoumi.exercice.service;
 
 import org.fatoumi.exercice.entity.Article;
 import org.fatoumi.exercice.entity.ArticleEntity;
+import org.fatoumi.exercice.entity.Comment;
+import org.fatoumi.exercice.entity.CommentEntity;
 import org.fatoumi.exercice.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.stream.events.Comment;
 import java.util.Optional;
 
 @Service
@@ -47,6 +48,11 @@ public class DefaultArticleService implements ArticleService {
 
     @Override
     public Article addComment(Integer id, Comment comment) {
-        return null;
+        ArticleEntity article = (ArticleEntity) this.find(id);
+        if(article!=null){
+            article.getComments().add((CommentEntity) comment);
+            articleRepository.save(article);
+        }
+        return article;
     }
 }

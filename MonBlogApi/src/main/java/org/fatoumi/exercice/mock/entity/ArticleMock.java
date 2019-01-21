@@ -2,6 +2,7 @@ package org.fatoumi.exercice.mock.entity;
 
 import lombok.Data;
 import org.fatoumi.exercice.entity.Article;
+import org.fatoumi.exercice.entity.Comment;
 
 import java.util.ArrayList;
 import java.util.List;

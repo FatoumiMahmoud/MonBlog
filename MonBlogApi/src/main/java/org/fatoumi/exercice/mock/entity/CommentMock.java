@@ -1,9 +1,10 @@
 package org.fatoumi.exercice.mock.entity;
 
 import lombok.Data;
+import org.fatoumi.exercice.entity.Comment;
 
 @Data
-public class CommentMock {
+public class CommentMock extends Comment {
 
     private Integer id;
 

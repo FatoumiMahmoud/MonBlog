@@ -4,6 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.fatoumi.exercice.entity.Article;
 import org.fatoumi.exercice.entity.ArticleEntity;
+import org.fatoumi.exercice.entity.CommentEntity;
 import org.fatoumi.exercice.service.DefaultArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -45,10 +46,10 @@ public class ArticleController {
     public void delete(@PathVariable Integer id) {
         articleService.delete(id);
     }
-/*
+
     @ApiOperation("Add comment to article")
     @PutMapping("{id}/comment")
-    public ArticleMock addComment(@RequestBody CommentMock comment, @PathVariable Integer id) {
+    public Article addComment(@RequestBody CommentEntity comment, @PathVariable Integer id) {
         return articleService.addComment(id, comment);
-    }*/
+    }
 }

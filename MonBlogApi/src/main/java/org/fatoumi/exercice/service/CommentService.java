@@ -1,32 +1,41 @@
 package org.fatoumi.exercice.service;
 
+import org.fatoumi.exercice.entity.Comment;
+
 public interface CommentService {
 
     /**
-     * @return list off all commentMocks
+     * @return list off all Comments
      */
-    //List<CommentMock> findAll();
+    Iterable<? extends  Comment> findAll();
 
     /**
      * @param id article id
      * @return the comment with the id
      */
-    //CommentMock find(Integer id);
+    Comment find(Integer id);
 
     /**
-     * @param commentMock the commentMock without id
-     * @return the created commentMock
+     * @param Comment the Comment without id
+     * @return the created Comment
      */
-    //CommentMock create(CommentMock commentMock);
+    Comment create(Comment Comment);
 
     /**
-     * @param commentMock
-     * @return the edited commentMock
+     * @param Comment
+     * @return the edited Comment
      */
-    //CommentMock edit(CommentMock commentMock);
+    Comment edit(Comment Comment);
 
     /**
      * @param id comment id to be deleted
      */
-    //void delete(Integer id);
+    void delete(Integer id);
+
+    /**
+     *
+     * @param articleId
+     * @return the comments for the article
+     */
+    Iterable<? extends Comment> findByArticle(Integer articleId);
 }
