@@ -38,13 +38,13 @@ public class DefaultCommentService implements CommentService {
     @Override
     public void delete(Integer id) {
         CommentEntity commentEntityToDelete = (CommentEntity) this.find(id);
-        if (commentEntityToDelete!=null) {
+        if (commentEntityToDelete != null) {
             commentRepository.delete(commentEntityToDelete);
         }
     }
 
     @Override
     public Iterable<? extends Comment> findByArticle(Integer articleId) {
-        return null;
+        return commentRepository.findAllByArticle(articleId);
     }
 }

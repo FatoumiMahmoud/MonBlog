@@ -9,16 +9,23 @@ import java.util.List;
 
 @Data
 @Entity
-public class ArticleEntity extends  Article{
+@Table(name = "ARTICLE")
+public class ArticleEntity extends Article {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     //TODO: use Long instead of Integer
     private Integer id;
+
+    @Column(name = "TITLE")
     private String title;
+
+    @Column(name = "CONTENT")
     private String content;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "article_id")
     private List<CommentEntity> comments = new ArrayList<>();
 
     public ArticleEntity() {

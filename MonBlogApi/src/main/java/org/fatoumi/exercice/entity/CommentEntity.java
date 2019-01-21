@@ -2,19 +2,24 @@ package org.fatoumi.exercice.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity
 @Data
+@Entity
+@Table(name = "COMMENT")
 public class CommentEntity extends Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Integer id;
+
+    @Column(name = "VALUE")
     private String value;
+
+    @ManyToOne
+    @JoinColumn(name = "article_id")
+    private ArticleEntity article;
 
     public CommentEntity() {
     }
