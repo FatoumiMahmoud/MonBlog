@@ -21,8 +21,6 @@ http://localhost:9080/api/articles for articles list
 http://localhost:9080/api/comments for comments list
 ```
 ## TODO swagger url
-
-[ ] ajouter la partie spring data et hybernate et la base de données en mémoire avec l'option init
  
 [ ] Ajouter la partie test
 
