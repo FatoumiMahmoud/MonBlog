@@ -1,8 +1,10 @@
 package org.fatoumi.exercice.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Data
 @Entity
@@ -17,8 +19,9 @@ public class CommentEntity extends Comment {
     @Column(name = "VALUE")
     private String value;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "article_id")
+    @JoinColumn(name = "ARTICLE_ID")
     private ArticleEntity article;
 
     public CommentEntity() {
@@ -26,5 +29,31 @@ public class CommentEntity extends Comment {
 
     public CommentEntity(String value) {
         this.value = value;
+    }
+
+    public CommentEntity(String value, ArticleEntity article) {
+        this.value = value;
+        this.article = article;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CommentEntity that = (CommentEntity) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "CommentEntity{" +
+                "id=" + id +
+                ", value='" + value + '\'' +
+                '}';
     }
 }
