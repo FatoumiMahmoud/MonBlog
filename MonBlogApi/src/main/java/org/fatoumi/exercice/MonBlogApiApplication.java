@@ -27,28 +27,28 @@ public class MonBlogApiApplication {
             log.info("--------------------------------------------");
 
             ArticleEntity article = new ArticleEntity("article 1", "artticle 1 content");
-            article.getComments().add(new CommentEntity("Commment ....1"));
-            article.getComments().add(new CommentEntity("Commment ....2"));
+            article.getComments().add(new CommentEntity("Comment ....1"));
+            article.getComments().add(new CommentEntity("Comment ....2"));
             articleRepository.save(article);
 
             article = new ArticleEntity("article 2", "artticle 2 content");
-            article.getComments().add(new CommentEntity("Commment ....3"));
-            article.getComments().add(new CommentEntity("Commment ....4"));
+            article.getComments().add(new CommentEntity("Comment ....3"));
+            article.getComments().add(new CommentEntity("Comment ....4"));
             articleRepository.save(article);
 
             article = new ArticleEntity("article 3", "artticle 3 content");
-            article.getComments().add(new CommentEntity("Commment ....5"));
-            article.getComments().add(new CommentEntity("Commment ....6"));
+            article.getComments().add(new CommentEntity("Comment ....5"));
+            article.getComments().add(new CommentEntity("Comment ....6"));
             articleRepository.save(article);
 
             article = new ArticleEntity("article 4", "artticle 4 content");
-            article.getComments().add(new CommentEntity("Commment ....7"));
-            article.getComments().add(new CommentEntity("Commment ....8"));
+            article.getComments().add(new CommentEntity("Comment ....7"));
+            article.getComments().add(new CommentEntity("Comment ....8"));
             articleRepository.save(article);
 
             article = new ArticleEntity("article 5", "artticle 5 content");
-            article.getComments().add(new CommentEntity("Commment ....9"));
-            article.getComments().add(new CommentEntity("Commment ....10"));
+            article.getComments().add(new CommentEntity("Comment ....9"));
+            article.getComments().add(new CommentEntity("Comment ....10"));
             articleRepository.save(article);
             log.info("--------------------------------------------");
 
