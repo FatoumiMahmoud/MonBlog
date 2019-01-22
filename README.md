@@ -1,10 +1,16 @@
 # MonBlog
 Une application spring boot pour le backend d'un blog
 
-## Install le back end 
+## Install le back end
+### With tests 
 ```
 cd MonBlogApi
 mvn clean install
+```
+### Without tests
+```
+cd MonBlogApi
+mvn clean install -DskipTests
 ```
 ## Run backend
 ### 1. Using maven (require a maven installation)
