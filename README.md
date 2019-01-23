@@ -22,10 +22,12 @@ java -jar target\monblogapi-0.0.1-SNAPSHOT.jar --init
 
 ## Test backend
 open your default browser
-```
-http://localhost:9080/api/articles for articles list
-http://localhost:9080/api/comments for comments list
-```
+
+Articles list --> http://localhost:9080/api/articles
+
+Comments list http://localhost:9080/api/comments
+
+
 ## Swagger URL
 
 http://localhost:9080/swagger-ui.html

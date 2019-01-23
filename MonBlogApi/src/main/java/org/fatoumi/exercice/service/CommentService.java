@@ -7,7 +7,7 @@ public interface CommentService {
     /**
      * @return list off all Comments
      */
-    Iterable<? extends  Comment> findAll();
+    Iterable<Comment> findAll();
 
     /**
      * @param id article id
@@ -33,9 +33,8 @@ public interface CommentService {
     void delete(Integer id);
 
     /**
-     *
      * @param articleId
      * @return the comments for the article
      */
-    Iterable<? extends Comment> findByArticle(Integer articleId);
+    Iterable<Comment> findByArticle(Integer articleId);
 }

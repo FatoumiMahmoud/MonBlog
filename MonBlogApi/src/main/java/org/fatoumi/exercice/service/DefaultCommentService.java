@@ -1,7 +1,6 @@
 package org.fatoumi.exercice.service;
 
 import org.fatoumi.exercice.entity.Comment;
-import org.fatoumi.exercice.entity.CommentEntity;
 import org.fatoumi.exercice.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,36 +14,36 @@ public class DefaultCommentService implements CommentService {
     private CommentRepository commentRepository;
 
     @Override
-    public Iterable<? extends Comment> findAll() {
+    public Iterable<Comment> findAll() {
         return commentRepository.findAll();
     }
 
     @Override
     public Comment find(Integer id) {
-        Optional<CommentEntity> optionalCommentEntity = commentRepository.findById(id);
+        Optional<Comment> optionalCommentEntity = commentRepository.findById(id);
         return optionalCommentEntity.isPresent() ? optionalCommentEntity.get() : null;
     }
 
     @Override
     public Comment create(Comment comment) {
-        return commentRepository.save((CommentEntity) comment);
+        return commentRepository.save(comment);
     }
 
     @Override
     public Comment edit(Comment comment) {
-        return commentRepository.save((CommentEntity) comment);
+        return commentRepository.save(comment);
     }
 
     @Override
     public void delete(Integer id) {
-        CommentEntity commentEntityToDelete = (CommentEntity) this.find(id);
+        Comment commentEntityToDelete = this.find(id);
         if (commentEntityToDelete != null) {
             commentRepository.delete(commentEntityToDelete);
         }
     }
 
     @Override
-    public Iterable<? extends Comment> findByArticle(Integer articleId) {
+    public Iterable<Comment> findByArticle(Integer articleId) {
         return commentRepository.findAllByArticle(articleId);
     }
 }
