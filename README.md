@@ -26,5 +26,7 @@ open your default browser
 http://localhost:9080/api/articles for articles list
 http://localhost:9080/api/comments for comments list
 ```
-## TODO swagger url
+## Swagger URL
+
+http://localhost:9080/swagger-ui.html
  
