@@ -14,10 +14,10 @@ mvn clean install -DskipTests
 ```
 ## Run backend
 ### 1. Using maven (require a maven installation)
-mvn spring-boot:run
+mvn spring-boot:run -Dspring-boot.run.arguments=--init
 ### 2. Using java (require JDK 8 or later)
 ```
-java -jar target\monblogapi-0.0.1-SNAPSHOT.jar
+java -jar target\monblogapi-0.0.1-SNAPSHOT.jar --init
 ```
 
 ## Test backend
@@ -28,8 +28,3 @@ http://localhost:9080/api/comments for comments list
 ```
 ## TODO swagger url
  
-[ ] Ajouter la partie test
-
-[ ] Développer un petit front avec Angular et le footre dans un répertoire static de l'application
-
-[ ] Ajouter la partie swagger 
