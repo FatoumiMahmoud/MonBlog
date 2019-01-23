@@ -3,7 +3,6 @@ package org.fatoumi.exercice.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.fatoumi.exercice.entity.Comment;
-import org.fatoumi.exercice.entity.CommentEntity;
 import org.fatoumi.exercice.service.DefaultCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +17,7 @@ public class CommentController {
 
     @ApiOperation("Find all commentMocks")
     @GetMapping
-    public Iterable<? extends Comment> findAll() {
+    public Iterable<Comment> findAll() {
         return commentService.findAll();
     }
 
@@ -30,13 +29,13 @@ public class CommentController {
 
     @ApiOperation("Create a comment and link it to its article")
     @PostMapping("create")
-    public Comment create(@RequestBody CommentEntity comment) {
+    public Comment create(@RequestBody Comment comment) {
         return commentService.create(comment);
     }
 
     @ApiOperation("Edit a comment")
     @PutMapping("edit")
-    public Comment edit(@RequestBody CommentEntity comment) {
+    public Comment edit(@RequestBody Comment comment) {
         return commentService.edit(comment);
     }
 
@@ -48,7 +47,7 @@ public class CommentController {
 
     @ApiOperation("Find all comments for one article")
     @GetMapping("article/{articleId}")
-    public Iterable<? extends Comment> findByArticle(@PathVariable Integer articleId){
+    public Iterable<Comment> findByArticle(@PathVariable Integer articleId) {
         return commentService.findByArticle(articleId);
     }
 }

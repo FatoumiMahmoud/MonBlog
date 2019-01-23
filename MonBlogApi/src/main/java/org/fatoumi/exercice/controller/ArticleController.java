@@ -3,8 +3,7 @@ package org.fatoumi.exercice.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.fatoumi.exercice.entity.Article;
-import org.fatoumi.exercice.entity.ArticleEntity;
-import org.fatoumi.exercice.entity.CommentEntity;
+import org.fatoumi.exercice.entity.Comment;
 import org.fatoumi.exercice.service.DefaultArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,7 @@ public class ArticleController {
 
     @ApiOperation("Find all articles")
     @GetMapping
-    public Iterable<ArticleEntity> findAll() {
+    public Iterable<Article> findAll() {
         return articleService.findAll();
     }
 
@@ -31,13 +30,13 @@ public class ArticleController {
 
     @ApiOperation("Create an article")
     @PostMapping("create")
-    public Article create(@RequestBody ArticleEntity article) {
+    public Article create(@RequestBody Article article) {
         return articleService.create(article);
     }
 
     @ApiOperation("Edit an article")
     @PutMapping("edit")
-    public Article edit(@RequestBody ArticleEntity editedArticle) {
+    public Article edit(@RequestBody Article editedArticle) {
         return articleService.edit(editedArticle);
     }
 
@@ -49,7 +48,7 @@ public class ArticleController {
 
     @ApiOperation("Add comment to article")
     @PutMapping("{id}/comment")
-    public Article addComment(@RequestBody CommentEntity comment, @PathVariable Integer id) {
+    public Article addComment(@RequestBody Comment comment, @PathVariable Integer id) {
         return articleService.addComment(id, comment);
     }
 }

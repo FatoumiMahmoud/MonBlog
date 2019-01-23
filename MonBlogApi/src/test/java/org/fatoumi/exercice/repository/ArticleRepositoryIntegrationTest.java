@@ -1,7 +1,6 @@
 package org.fatoumi.exercice.repository;
 
-import org.fatoumi.exercice.entity.ArticleEntity;
-import org.junit.Before;
+import org.fatoumi.exercice.entity.Article;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ import static org.junit.Assert.assertNotEquals;
 @DataJpaTest
 public class ArticleRepositoryIntegrationTest {
 
-    private String articleTableName = ArticleEntity.class.getAnnotation(Table.class).name();
+    private String articleTableName = Article.class.getAnnotation(Table.class).name();
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -38,7 +37,7 @@ public class ArticleRepositoryIntegrationTest {
 
         numberOfArticleExpected = JdbcTestUtils.countRowsInTable(jdbcTemplate, articleTableName);
 
-        List<ArticleEntity> articles = (List<ArticleEntity>) sut.findAll();
+        List<Article> articles = (List<Article>) sut.findAll();
         numberOfArticleFound = articles.size();
 
         assertEquals(numberOfArticleExpected, numberOfArticleFound);
@@ -46,13 +45,13 @@ public class ArticleRepositoryIntegrationTest {
 
     @Test
     public void should_return_article_when_findById() {
-        ArticleEntity article = new ArticleEntity("Title", "Content");
-        ArticleEntity articlePersisted = entityManager.persist(article);
+        Article article = new Article("Title", "Content");
+        Article articlePersisted = entityManager.persist(article);
         entityManager.flush();
 
-        ArticleEntity articleExpected, articleFound;
+        Article articleExpected, articleFound;
 
-        articleExpected = entityManager.find(ArticleEntity.class, articlePersisted.getId());
+        articleExpected = entityManager.find(Article.class, articlePersisted.getId());
         articleFound = sut.findById(articlePersisted.getId()).get();
 
         assertEquals(articleExpected, articleFound);
@@ -62,10 +61,10 @@ public class ArticleRepositoryIntegrationTest {
     public void should_create_article_when_create() {
         Integer numberOfArticleBeforeSave = JdbcTestUtils.countRowsInTable(jdbcTemplate, articleTableName);
 
-        ArticleEntity article = new ArticleEntity("Title test", "Content tes");
-        ArticleEntity articleFound = sut.save(article);
+        Article article = new Article("Title test", "Content tes");
+        Article articleFound = sut.save(article);
 
-        ArticleEntity articleExpected = entityManager.find(ArticleEntity.class, articleFound.getId());
+        Article articleExpected = entityManager.find(Article.class, articleFound.getId());
         Integer numberOfArticleAfterSave = JdbcTestUtils.countRowsInTable(jdbcTemplate, articleTableName);
 
         assertNotEquals(numberOfArticleBeforeSave, numberOfArticleAfterSave);
@@ -75,11 +74,11 @@ public class ArticleRepositoryIntegrationTest {
 
     @Test
     public void should_edit_article_when_edit() {
-        ArticleEntity article = new ArticleEntity("Title", "Content");
-        ArticleEntity articlePersisted = entityManager.persist(article);
+        Article article = new Article("Title", "Content");
+        Article articlePersisted = entityManager.persist(article);
         entityManager.flush();
 
-        article = entityManager.find(ArticleEntity.class, articlePersisted.getId());
+        article = entityManager.find(Article.class, articlePersisted.getId());
         assertEquals(article.getTitle(), "Title");
         assertEquals(article.getContent(), "Content");
 
@@ -87,7 +86,7 @@ public class ArticleRepositoryIntegrationTest {
         article.setContent("Edited content");
         sut.save(article);
 
-        ArticleEntity articleFound = entityManager.find(ArticleEntity.class, articlePersisted.getId());
+        Article articleFound = entityManager.find(Article.class, articlePersisted.getId());
         assertEquals("Edited title", articleFound.getTitle());
         assertEquals("Edited content", articleFound.getContent());
     }
@@ -95,13 +94,13 @@ public class ArticleRepositoryIntegrationTest {
     @Test
     public void should_delete_article_when_delete() {
 
-        entityManager.persist(new ArticleEntity("Title", "Content"));
+        entityManager.persist(new Article("Title", "Content"));
         entityManager.flush();
         Integer numberOfArticleBeforeDelete = JdbcTestUtils.countRowsInTable(jdbcTemplate, articleTableName);
 
-        ArticleEntity article = entityManager.find(ArticleEntity.class, 1);
+        Article article = entityManager.find(Article.class, 1);
         sut.delete(article);
-        Integer numberOfArticleAfterDelete = ((List<ArticleEntity>) sut.findAll()).size();
+        Integer numberOfArticleAfterDelete = ((List<Article>) sut.findAll()).size();
 
         assertNotEquals(numberOfArticleBeforeDelete, numberOfArticleAfterDelete);
         assertEquals(numberOfArticleBeforeDelete, numberOfArticleAfterDelete, 1);

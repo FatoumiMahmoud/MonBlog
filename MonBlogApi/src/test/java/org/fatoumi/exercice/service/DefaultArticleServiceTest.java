@@ -1,6 +1,6 @@
 package org.fatoumi.exercice.service;
 
-import org.fatoumi.exercice.entity.ArticleEntity;
+import org.fatoumi.exercice.entity.Article;
 import org.fatoumi.exercice.repository.ArticleRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DefaultArticleServiceTest {
-    ArticleEntity article = new ArticleEntity();
+    Article article = new Article();
 
     @Mock
     private ArticleRepository articleRepository;

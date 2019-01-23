@@ -1,9 +1,7 @@
 package org.fatoumi.exercice.service;
 
 import org.fatoumi.exercice.entity.Article;
-import org.fatoumi.exercice.entity.ArticleEntity;
 import org.fatoumi.exercice.entity.Comment;
-import org.fatoumi.exercice.entity.CommentEntity;
 import org.fatoumi.exercice.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,29 +16,29 @@ public class DefaultArticleService implements ArticleService {
 
 
     @Override
-    public Iterable<ArticleEntity> findAll() {
+    public Iterable<Article> findAll() {
         return articleRepository.findAll();
     }
 
     @Override
     public Article find(Integer id) {
-        Optional<ArticleEntity> optionalArticleEntity = articleRepository.findById(id);
+        Optional<Article> optionalArticleEntity = articleRepository.findById(id);
         return optionalArticleEntity.isPresent() ? optionalArticleEntity.get() : null;
     }
 
     @Override
     public Article create(Article article) {
-        return articleRepository.save((ArticleEntity) article);
+        return articleRepository.save(article);
     }
 
     @Override
     public Article edit(Article article) {
-        return articleRepository.save((ArticleEntity) article);
+        return articleRepository.save(article);
     }
 
     @Override
     public void delete(Integer id) {
-        ArticleEntity article = (ArticleEntity) this.find(id);
+        Article article = this.find(id);
         if (article != null) {
             articleRepository.delete(article);
         }
@@ -48,9 +46,9 @@ public class DefaultArticleService implements ArticleService {
 
     @Override
     public Article addComment(Integer id, Comment comment) {
-        ArticleEntity article = (ArticleEntity) this.find(id);
-        if(article!=null){
-            article.getComments().add((CommentEntity) comment);
+        Article article = this.find(id);
+        if (article != null) {
+            article.getComments().add(comment);
             articleRepository.save(article);
         }
         return article;

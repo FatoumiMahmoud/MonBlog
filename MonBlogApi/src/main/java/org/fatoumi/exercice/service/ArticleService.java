@@ -8,7 +8,7 @@ public interface ArticleService {
     /**
      * @return list off all articles
      */
-    Iterable<? extends Article> findAll();
+    Iterable<Article> findAll();
 
     /**
      * @param id article id
