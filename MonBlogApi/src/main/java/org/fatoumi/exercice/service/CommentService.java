@@ -10,7 +10,7 @@ public interface CommentService {
     Iterable<Comment> findAll();
 
     /**
-     * @param id article id
+     * @param id post id
      * @return the comment with the id
      */
     Comment find(Integer id);
@@ -33,8 +33,8 @@ public interface CommentService {
     void delete(Integer id);
 
     /**
-     * @param articleId
-     * @return the comments for the article
+     * @param postId
+     * @return the comments for the post
      */
-    Iterable<Comment> findByArticle(Integer articleId);
+    Iterable<Comment> findByPost(Integer postId);
 }

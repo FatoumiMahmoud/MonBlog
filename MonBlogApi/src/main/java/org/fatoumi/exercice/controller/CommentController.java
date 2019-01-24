@@ -27,7 +27,7 @@ public class CommentController {
         return commentService.find(id);
     }
 
-    @ApiOperation("Create a comment and link it to its article")
+    @ApiOperation("Create a comment and link it to its post")
     @PostMapping("create")
     public Comment create(@RequestBody Comment comment) {
         return commentService.create(comment);
@@ -45,9 +45,9 @@ public class CommentController {
         commentService.delete(id);
     }
 
-    @ApiOperation("Find all comments for one article")
-    @GetMapping("article/{articleId}")
-    public Iterable<Comment> findByArticle(@PathVariable Integer articleId) {
-        return commentService.findByArticle(articleId);
+    @ApiOperation("Find all comments for one post")
+    @GetMapping("post/{postId}")
+    public Iterable<Comment> findByPost(@PathVariable Integer postId) {
+        return commentService.findByPost(postId);
     }
 }

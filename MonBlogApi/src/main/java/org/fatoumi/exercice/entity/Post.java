@@ -11,32 +11,32 @@ import java.util.Objects;
 
 @Data
 @Entity
-@Table(name = "ARTICLE")
-public class Article {
+@Table(name = "POST")
+public class Post {
 
-    @ApiModelProperty(notes = "the id of the article")
+    @ApiModelProperty(notes = "the id of the post")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     //TODO: use Long instead of Integer
     private Integer id;
 
-    @ApiModelProperty(notes = "the title of the article")
+    @ApiModelProperty(notes = "the title of the post")
     @Column(name = "TITLE")
     private String title;
 
-    @ApiModelProperty(notes = "the content of the article")
+    @ApiModelProperty(notes = "the content of the post")
     @Column(name = "CONTENT")
     private String content;
 
-    @ApiModelProperty(notes = "The comments list of the article")
+    @ApiModelProperty(notes = "The comments list of the post")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Comment> comments = new ArrayList<>();
 
-    public Article() {
+    public Post() {
     }
 
-    public Article(String title, String content) {
+    public Post(String title, String content) {
         this.title = title;
         this.content = content;
     }
@@ -45,7 +45,7 @@ public class Article {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Article that = (Article) o;
+        Post that = (Post) o;
         return Objects.equals(id, that.id);
     }
 
@@ -56,7 +56,7 @@ public class Article {
 
     @Override
     public String toString() {
-        return "Article{" +
+        return "Post{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +

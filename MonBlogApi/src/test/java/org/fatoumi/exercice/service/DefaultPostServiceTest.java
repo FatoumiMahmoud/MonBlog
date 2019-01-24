@@ -1,7 +1,7 @@
 package org.fatoumi.exercice.service;
 
-import org.fatoumi.exercice.entity.Article;
-import org.fatoumi.exercice.repository.ArticleRepository;
+import org.fatoumi.exercice.entity.Post;
+import org.fatoumi.exercice.repository.PostRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,24 +15,24 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class DefaultArticleServiceTest {
-    Article article = new Article();
+public class DefaultPostServiceTest {
+    Post post = new Post();
 
     @Mock
-    private ArticleRepository articleRepository;
+    private PostRepository postRepository;
 
     @InjectMocks
-    private DefaultArticleService sut = new DefaultArticleService();
+    private DefaultPostService sut = new DefaultPostService();
 
     @Before
     public void init() {
-        article.setId(1);
-        when(articleRepository.findById(1)).thenReturn(Optional.of(article));
+        post.setId(1);
+        when(postRepository.findById(1)).thenReturn(Optional.of(post));
     }
 
     @Test
-    public void should_return_article_when_find() {
-        assertEquals(article, sut.find(1));
+    public void should_return_post_when_find() {
+        assertEquals(post, sut.find(1));
     }
 
     //TODO: test find all, create, edit and delete
