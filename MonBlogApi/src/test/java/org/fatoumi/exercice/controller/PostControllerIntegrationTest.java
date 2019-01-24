@@ -1,7 +1,7 @@
 package org.fatoumi.exercice.controller;
 
-import org.fatoumi.exercice.entity.Article;
-import org.fatoumi.exercice.service.DefaultArticleService;
+import org.fatoumi.exercice.entity.Post;
+import org.fatoumi.exercice.service.DefaultPostService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,42 +23,42 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(ArticleController.class)
-public class ArticleControllerIntegrationTest {
+@WebMvcTest(PostController.class)
+public class PostControllerIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
 
     @MockBean
-    private DefaultArticleService articleService;
+    private DefaultPostService postService;
 
     @Test
-    public void should_return_json_array_when_findAll_given_article_list() throws Exception {
-        Article article = new Article("Title", "Content");
-        List<Article> articles = Arrays.asList(article);
-        when(articleService.findAll()).thenReturn(articles);
+    public void should_return_json_array_when_findAll_given_post_list() throws Exception {
+        Post post = new Post("Title", "Content");
+        List<Post> posts = Arrays.asList(post);
+        when(postService.findAll()).thenReturn(posts);
 
-        mvc.perform(get("/api/articles")
+        mvc.perform(get("/api/post")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].title", is(article.getTitle())));
+                .andExpect(jsonPath("$[0].title", is(post.getTitle())));
     }
 
     @Test
     public void should_return_json_array_when_find() throws Exception {
-        Article article = new Article("Title", "Content");
-        when(articleService.find(1)).thenReturn(article);
+        Post post = new Post("Title", "Content");
+        when(postService.find(1)).thenReturn(post);
 
-        mvc.perform(get("/api/articles/1")
+        mvc.perform(get("/api/post/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title", is(article.getTitle())));
+                .andExpect(jsonPath("$.title", is(post.getTitle())));
     }
 
     @Test
-    public void should_delete_article_when_delete() throws Exception {
-        mvc.perform(delete("/api/articles/1")
+    public void should_delete_post_when_delete() throws Exception {
+        mvc.perform(delete("/api/post/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }

@@ -43,7 +43,7 @@ public class DefaultCommentService implements CommentService {
     }
 
     @Override
-    public Iterable<Comment> findByArticle(Integer articleId) {
-        return commentRepository.findAllByArticle(articleId);
+    public Iterable<Comment> findByPost(Integer postId) {
+        return commentRepository.findAllByPost(postId);
     }
 }

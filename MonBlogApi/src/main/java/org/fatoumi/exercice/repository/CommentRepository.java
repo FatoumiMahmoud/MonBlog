@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
-    @Query("SELECT C FROM Article A LEFT JOIN A.comments C WHERE A.id = ?1")
-    List<Comment> findAllByArticle(Integer articleId);
+    @Query("SELECT C FROM Post A LEFT JOIN A.comments C WHERE A.id = ?1")
+    List<Comment> findAllByPost(Integer postId);
 }

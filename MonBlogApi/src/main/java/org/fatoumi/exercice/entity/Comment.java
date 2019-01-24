@@ -22,11 +22,11 @@ public class Comment {
     @Column(name = "VALUE")
     private String value;
 
-    @ApiModelProperty(notes = "The article linked to the comment")
+    @ApiModelProperty(notes = "The post linked to the comment")
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "ARTICLE_ID")
-    private Article article;
+    @JoinColumn(name = "POST_ID")
+    private Post post;
 
     public Comment() {
     }
@@ -35,9 +35,9 @@ public class Comment {
         this.value = value;
     }
 
-    public Comment(String value, Article article) {
+    public Comment(String value, Post post) {
         this.value = value;
-        this.article = article;
+        this.post = post;
     }
 
     @Override
