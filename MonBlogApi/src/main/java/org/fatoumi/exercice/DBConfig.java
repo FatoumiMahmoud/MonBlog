@@ -30,34 +30,34 @@ public class DBConfig {
         Post post;
         Comment c1, c2;
 
-        post = new Post("post 1", "artticle 1 content");
+        post = new Post("post 1", "post 1 content");
         c1 = new Comment("Comment ....1", post);
         c2 = new Comment("Comment ....2", post);
         post.getComments().add(c1);
         postRepository.save(post);
 
-        post = new Post("post 2", "artticle 2 content");
+        post = new Post("post 2", "post 2 content");
         c1 = new Comment("Comment ....3", post);
         c2 = new Comment("Comment ....4", post);
         post.getComments().add(c1);
         post.getComments().add(c2);
         postRepository.save(post);
 
-        post = new Post("post 3", "artticle 3 content");
+        post = new Post("post 3", "post 3 content");
         c1 = new Comment("Comment ....5", post);
         c2 = new Comment("Comment ....6", post);
         post.getComments().add(c1);
         post.getComments().add(c2);
         postRepository.save(post);
 
-        post = new Post("post 4", "artticle 4 content");
+        post = new Post("post 4", "post 4 content");
         c1 = new Comment("Comment ....7", post);
         c2 = new Comment("Comment ....8", post);
         post.getComments().add(c1);
         post.getComments().add(c2);
         postRepository.save(post);
 
-        post = new Post("post 5", "artticle 5 content");
+        post = new Post("post 5", "post 5 content");
         c1 = new Comment("Comment ....9", post);
         c2 = new Comment("Comment ....10", post);
         post.getComments().add(c1);

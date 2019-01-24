@@ -2,11 +2,13 @@ package org.fatoumi.exercice.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.fatoumi.exercice.entity.Post;
 import org.fatoumi.exercice.entity.Comment;
+import org.fatoumi.exercice.entity.Post;
 import org.fatoumi.exercice.service.DefaultPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/post")
@@ -15,6 +17,20 @@ public class PostController {
 
     @Autowired
     private DefaultPostService postService;
+
+    @ApiOperation("Add comment to post")
+    @PostMapping("{id}/comments")
+    public Post addComment(@RequestBody Comment comment, @PathVariable Integer id) {
+        return postService.addComment(id, comment);
+    }
+
+    @ApiOperation("Return all comments for one post")
+    @GetMapping("{id}/comments")
+    public List<Comment> getAllPostComments(@PathVariable Integer id) {
+        return postService.find(id).getComments();
+    }
+
+    //*******************************************************************************//
 
     @ApiOperation("Find all posts")
     @GetMapping
@@ -28,13 +44,13 @@ public class PostController {
         return postService.find(id);
     }
 
-    @ApiOperation("Create an post")
+    @ApiOperation("Create a post")
     @PostMapping("create")
     public Post create(@RequestBody Post post) {
         return postService.create(post);
     }
 
-    @ApiOperation("Edit an post")
+    @ApiOperation("Edit a post")
     @PutMapping("edit")
     public Post edit(@RequestBody Post editedPost) {
         return postService.edit(editedPost);
@@ -46,9 +62,4 @@ public class PostController {
         postService.delete(id);
     }
 
-    @ApiOperation("Add comment to post")
-    @PutMapping("{id}/comment")
-    public Post addComment(@RequestBody Comment comment, @PathVariable Integer id) {
-        return postService.addComment(id, comment);
-    }
 }
