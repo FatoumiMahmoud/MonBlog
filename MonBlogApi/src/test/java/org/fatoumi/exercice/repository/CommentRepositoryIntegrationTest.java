@@ -12,7 +12,8 @@ public class CommentRepositoryIntegrationTest {
 
     @Autowired
     private CommentRepository sut;
-    
+
+    //TODO: test method of CommentRepository
     @Test
     public void test() {
 

@@ -41,7 +41,7 @@ public class ArticleController {
     }
 
     @ApiOperation("Delete article by id")
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("{id}")
     public void delete(@PathVariable Integer id) {
         articleService.delete(id);
     }
