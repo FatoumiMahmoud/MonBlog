@@ -20,8 +20,8 @@ public class DefaultCommentService implements CommentService {
 
     @Override
     public Comment find(Integer id) {
-        Optional<Comment> optionalCommentEntity = commentRepository.findById(id);
-        return optionalCommentEntity.isPresent() ? optionalCommentEntity.get() : null;
+        Optional<Comment> optionalComment = commentRepository.findById(id);
+        return optionalComment.isPresent() ? optionalComment.get() : null;
     }
 
     @Override

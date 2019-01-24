@@ -14,7 +14,6 @@ public class DefaultArticleService implements ArticleService {
     @Autowired
     private ArticleRepository articleRepository;
 
-
     @Override
     public Iterable<Article> findAll() {
         return articleRepository.findAll();
@@ -22,8 +21,8 @@ public class DefaultArticleService implements ArticleService {
 
     @Override
     public Article find(Integer id) {
-        Optional<Article> optionalArticleEntity = articleRepository.findById(id);
-        return optionalArticleEntity.isPresent() ? optionalArticleEntity.get() : null;
+        Optional<Article> optionalArticle = articleRepository.findById(id);
+        return optionalArticle.isPresent() ? optionalArticle.get() : null;
     }
 
     @Override
